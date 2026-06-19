@@ -1,0 +1,35 @@
+# ── Raw data (too large for git) ─────────────────────────────────
+POI 2024/
+urban data/
+
+# ── Computed cache (regeneratable from notebooks) ────────────────
+cache/
+
+# ── Large binary / archive files ─────────────────────────────────
+*.parquet
+*.gt
+*.zip
+*.rar
+*.shp
+*.dbf
+*.shx
+*.prj
+*.cpg
+
+# ── PDFs (copyright) ─────────────────────────────────────────────
+*.pdf
+
+# ── Python ───────────────────────────────────────────────────────
+__pycache__/
+.ipynb_checkpoints/
+*.pyc
+.env
+.env.local
+
+# ── Node / webapp (handled in webapp/.gitignore too) ─────────────
+webapp/node_modules/
+webapp/dist/
+webapp/.vercel/
+
+# ── Misc ─────────────────────────────────────────────────────────
+.DS_Store

@@ -1,0 +1,38 @@
+import geopandas as gpd
+import pandas as pd
+from pathlib import Path
+
+# Folder containing all shapefiles
+shp_dir = Path("/Users/fabien/Documents/workspace/SHU-communities/data/poi/S-上海/02-POI/23/Shp")
+
+gdfs = []
+
+for shp_file in shp_dir.glob("*.shp"):
+    print(f"Loading {shp_file.name}")
+
+    gdf = gpd.read_file(shp_file)
+
+    # Store source file/category
+    gdf["source_file"] = shp_file.stem
+
+    # Extract major category from filename
+    # Example: 上海市_科教文化服务_WGS84
+    parts = shp_file.stem.split("_")
+    if len(parts) >= 2:
+        gdf["行业大"] = parts[1]
+
+    gdfs.append(gdf)
+
+# Merge everything
+gdf = pd.concat(gdfs, ignore_index=True)
+
+# Convert back to GeoDataFrame
+gdf = gpd.GeoDataFrame(
+    gdf,
+    geometry="geometry",
+    crs=gdfs[0].crs
+)
+
+print(len(gdf))
+print(gdf.shape)
+print(gdf["行业大"].value_counts())
