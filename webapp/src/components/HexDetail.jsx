@@ -40,7 +40,8 @@ export default function HexDetail({ hex, effectiveMode, viewKey, onClose }) {
       </div>
 
       <p className="detail-mode-label">
-        Subscores: <strong>{SUBSCORE_LABEL[effectiveMode]}</strong>
+        Access subscores: <strong>{SUBSCORE_LABEL[effectiveMode]}</strong>
+        <span className="detail-mode-note"> · cumulative-opportunity levels</span>
         {viewKey === 'track_c' && <span className="detail-mode-note"> (baseline component)</span>}
       </p>
 
@@ -66,7 +67,7 @@ export default function HexDetail({ hex, effectiveMode, viewKey, onClose }) {
       </div>
 
       <p className="detail-mode-label detail-section-head">
-        Affordability &amp; equity <span className="detail-mode-note">(Track C · mode-independent)</span>
+        Affordability &amp; equity <span className="detail-mode-note">(Track C · percentile-ranked, mode-independent)</span>
       </p>
       <div className="detail-indicators">
         {TRACK_C_SUBS.map(sub => {

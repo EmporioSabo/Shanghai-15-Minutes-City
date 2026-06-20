@@ -1,6 +1,4 @@
-import { scoreToHex } from '../lib/colors.js'
-
-const TICKS = [0, 0.25, 0.5, 0.75, 1.0]
+import { SCORE_CLASSES } from '../lib/colors.js'
 
 const FIELD_LABELS = {
   base: 'Baseline (walk+bike avg)',
@@ -15,13 +13,13 @@ export default function Legend({ activeField }) {
   return (
     <div className="legend">
       <span className="legend-title">
-        {FIELD_LABELS[activeField] ?? 'Score'}
+        {FIELD_LABELS[activeField] ?? 'Score'} · 5 classes
       </span>
-      <div className="legend-gradient">
-        {TICKS.map(t => (
-          <div key={t} className="legend-tick">
-            <div className="legend-swatch" style={{ background: scoreToHex(t) }} />
-            <span>{(t * 100).toFixed(0)}%</span>
+      <div className="legend-classes">
+        {SCORE_CLASSES.map(c => (
+          <div key={c.label} className="legend-extra-item">
+            <div className="legend-swatch" style={{ background: `rgb(${c.rgb.join(',')})` }} />
+            <span>{c.label} <span className="hint-text">({c.range})</span></span>
           </div>
         ))}
       </div>

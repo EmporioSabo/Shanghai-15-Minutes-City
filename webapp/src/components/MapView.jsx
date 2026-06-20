@@ -2,7 +2,7 @@ import { useMemo } from 'react'
 import DeckGL from '@deck.gl/react'
 import { H3HexagonLayer } from '@deck.gl/geo-layers'
 import Map from 'react-map-gl/maplibre'
-import { scoreToColor, scoreToRgb } from '../lib/colors.js'
+import { scoreToClassColor, scoreToClassRgb } from '../lib/colors.js'
 
 const MAP_STYLE = 'https://basemaps.cartocdn.com/gl/positron-gl-style/style.json'
 
@@ -26,13 +26,13 @@ export default function MapView({ hexData, activeField, topHexes, showSweetSpots
         if (showSweetSpots && d.ss) return [255, 214, 0, 50]
         const v = d[activeField]
         if (v === null) return [200, 200, 200, 15]
-        return [...scoreToRgb(v), 28]
+        return [...scoreToClassRgb(v), 28]
       }
 
-      // Normal rendering
+      // Normal rendering — 5-class classified choropleth (Mouratidis-style)
       if (showSweetSpots && d.ss) return SWEET_COLOR
       const v = d[activeField]
-      return v === null ? NO_DATA : scoreToColor(v)
+      return v === null ? NO_DATA : scoreToClassColor(v)
     },
     getLineColor: d => recommenderActive && !topHexes.has(d.id)
       ? [0, 0, 0, 0]
