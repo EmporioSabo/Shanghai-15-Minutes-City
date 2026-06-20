@@ -32,7 +32,7 @@ export default function Recommender({ sliders, setSliders, onRecommend, onClear,
 
       <div className="rec-method-box">
         <p className="rec-method-title">{MODE_LABELS[effectiveMode]}</p>
-        <p className="rec-method-body">{VIEW_METHOD[viewKey]} · affordability uses rent percentile (mode-independent).</p>
+        <p className="rec-method-body">{VIEW_METHOD[viewKey]} · affordability blends rent, income/rent &amp; social housing (mode-independent).</p>
       </div>
 
       <p className="rec-hint">Adjust weights, then find your top 10 hexes.</p>

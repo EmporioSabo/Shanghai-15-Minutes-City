@@ -6,7 +6,7 @@ import HexDetail from './components/HexDetail.jsx'
 import Recommender from './components/Recommender.jsx'
 import InfoModal from './components/InfoModal.jsx'
 import Legend from './components/Legend.jsx'
-import { getIndicatorScore } from './lib/modes.js'
+import { getIndicatorScore, getAffordabilityScore } from './lib/modes.js'
 
 // One flat list of views. Selecting any of them drives the map colour,
 // detail-panel subscores, and recommender scoring consistently.
@@ -18,7 +18,7 @@ const VIEWS = [
   },
   {
     key: 'track_c', label: 'Track C', field: 'tc', mode: 'baseline',
-    hint: '0.5 × baseline + 0.3 × affordability + 0.2 × transit',
+    hint: 'Affordability composite · 7 indicators (rent, income/rent, jobs, social housing, amenities…)',
   },
   {
     key: 'walk', label: '🚶 Walk', field: 'wk', mode: 'walk',
@@ -94,7 +94,7 @@ export default function App() {
           getIndicatorScore(h, 'edu',    mode) * sliders.edu +
           getIndicatorScore(h, 'rec',    mode) * sliders.rec +
           getIndicatorScore(h, 'tran',   mode) * sliders.transit +
-          (h.raf ?? 0.5) * sliders.affordability
+          getAffordabilityScore(h) * sliders.affordability
         ) / total,
       }))
       .sort((a, b) => b.recScore - a.recScore)

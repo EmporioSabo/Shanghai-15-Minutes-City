@@ -29,3 +29,16 @@ export const MODE_LABELS = {
   transit:  '🚇 Transit',
   car:      '🚗 Car',
 }
+
+// Track C affordability lenses (all 0–1, mode-independent):
+//   raf = rent affordability (inverted percentile of Anjuke sale price/m²)
+//   ir  = income-to-rent ratio (district-level)
+//   sh  = proximity to nearest social/affordable-housing community
+export const AFFORDABILITY_KEYS = ['raf', 'ir', 'sh']
+
+// Blended affordability used by the recommender's "Affordability" priority —
+// the mean of the three affordability lenses (rent, income/rent, social housing).
+export function getAffordabilityScore(hex) {
+  const vals = AFFORDABILITY_KEYS.map(k => hex[k] ?? 0.5)
+  return vals.reduce((a, b) => a + b, 0) / vals.length
+}

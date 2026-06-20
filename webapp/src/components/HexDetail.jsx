@@ -18,6 +18,17 @@ const SUBSCORE_LABEL = {
   car:      '🚗 Car',
 }
 
+// Track C affordability & equity sub-scores (direct hex fields, 0–1, mode-independent)
+const TRACK_C_SUBS = [
+  { key: 'raf', label: 'Low rent' },
+  { key: 'ir',  label: 'Income vs rent' },
+  { key: 'sh',  label: 'Social housing' },
+  { key: 'et',  label: 'Jobs by transit' },
+  { key: 'fa',  label: 'Free amenities' },
+  { key: 'cr',  label: 'Clinics' },
+  { key: 'sp',  label: 'Public schools' },
+]
+
 export default function HexDetail({ hex, effectiveMode, viewKey, onClose }) {
   const pct = v => ((v ?? 0) * 100).toFixed(0)
 
@@ -39,6 +50,30 @@ export default function HexDetail({ hex, effectiveMode, viewKey, onClose }) {
           return (
             <div key={ind.key} className="ind-row">
               <span className="ind-label">{ind.label}</span>
+              <div className="ind-track">
+                <div
+                  className="ind-fill"
+                  style={{
+                    width: `${pct(score)}%`,
+                    background: scoreToHex(score ?? 0),
+                  }}
+                />
+              </div>
+              <span className="ind-val">{pct(score)}%</span>
+            </div>
+          )
+        })}
+      </div>
+
+      <p className="detail-mode-label detail-section-head">
+        Affordability &amp; equity <span className="detail-mode-note">(Track C · mode-independent)</span>
+      </p>
+      <div className="detail-indicators">
+        {TRACK_C_SUBS.map(sub => {
+          const score = hex[sub.key]
+          return (
+            <div key={sub.key} className="ind-row">
+              <span className="ind-label">{sub.label}</span>
               <div className="ind-track">
                 <div
                   className="ind-fill"
