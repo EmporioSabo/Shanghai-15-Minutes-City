@@ -31,5 +31,8 @@ webapp/node_modules/
 webapp/dist/
 webapp/.vercel/
 
+# ── Local working notes (not for public repo) ───────────────────
+doubao_report.md
+
 # ── Misc ─────────────────────────────────────────────────────────
 .DS_Store
