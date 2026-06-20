@@ -22,9 +22,9 @@ export default function InfoModal({ onClose }) {
 
         <h3>Methodology</h3>
         <p><strong>Grid:</strong> 500 m square cells (31,445 total) clipped to Shanghai boundary.</p>
-        <p><strong>Proximity Time (PT):</strong> Network travel time to the <em>nearest</em> POI per indicator (k=1), capped at 900 s (15 min). Computed for walk, bike, transit and car modes via Dijkstra on the OSM road graph.</p>
-        <p><strong>Accessibility score:</strong> <code>max(0, 1 − PT / 900)</code> — maps 0 s → 1.0, 900 s → 0.0.</p>
-        <p><strong>Baseline composite:</strong> Average of walk and bike scores across 6 indicators (food, healthcare, education, recreation, transit stops, daily services). Car isochrones are included for comparison only and do not feed the baseline.</p>
+        <p><strong>Accessibility — cumulative opportunities</strong> (Mouratidis, 2026): for each cell and mode we count the POIs of each indicator reachable within a 15-minute catchment, computed via Dijkstra on the OSM road graph. Walk uses an inclusive 3.39 km/h speed (850 m/15 min); bike, transit and car are also computed.</p>
+        <p><strong>Accessibility score:</strong> each count <code>n</code> is mapped to 0–1 with a saturating kernel <code>1 − exp(−n / n₀)</code>, where n₀ is the typical walkable supply of that indicator. So presence within 15 min counts (a facility 14 min away is no longer scored ≈0), more reachable scores higher, and none scores 0.</p>
+        <p><strong>Baseline composite:</strong> Average of walk and bike scores across 6 indicators (food, healthcare, education, recreation, transit stops, daily services). Education counts schools, not private tutoring. Car is shown for comparison only and does not feed the baseline.</p>
         <p><strong>Track C (Affordability):</strong> A 7-indicator composite —
           <code>0.25 × baseline + 0.20 × rent + 0.15 × income/rent + 0.12 × jobs-by-transit + 0.10 × social-housing + 0.08 × free-amenities + 0.05 × clinics + 0.05 × public-schools</code>.
           Rent is the inverted percentile of median Anjuke price/m²; income/rent is the district disposable-income-to-rent ratio; social-housing is proximity to the nearest affordable-housing community.</p>
@@ -42,6 +42,7 @@ export default function InfoModal({ onClose }) {
         </ul>
 
         <h3>References</h3>
+        <p>Mouratidis, K. (2026). The 15-minute city revisited: a GIS approach to measuring accessibility by proximity and by public transport supply. <em>Travel Behaviour and Society</em>, 42, 101151.</p>
         <p>Bruno et al. (2024). A universal framework for inclusive 15-minute cities. <em>Nature Cities</em>, 1, 633–641.</p>
         <p>Vale &amp; Lopes (2023). Accessibility inequality across Europe. <em>npj Urban Sustainability</em>, 3, 55.</p>
         <p>Zhang et al. (2022). Towards a 15-minute city: a network-based evaluation framework. <em>Environment and Planning B</em>, 50, 500–514.</p>
