@@ -44,3 +44,6 @@ B表*.csv
 
 # ── Misc ─────────────────────────────────────────────────────────
 .DS_Store
+
+# doubao4.csv is the raw download; canonical copy is 上海保障性住房项目2024.csv
+doubao4.csv
