@@ -38,6 +38,9 @@ comparison/
 doubao*.txt
 deepseek*.txt
 上海市民办学校名单 2024.md
+A表*.csv
+B表*.csv
+数据来源与说明文档.md
 
 # ── Misc ─────────────────────────────────────────────────────────
 .DS_Store
