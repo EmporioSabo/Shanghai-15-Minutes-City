@@ -17,7 +17,7 @@ export default function InfoModal({ onClose }) {
             <tr><td>Real estate prices — 445k listings</td><td>Anjuke.com via UTSEUS</td><td>pre-2024</td></tr>
             <tr><td>Social housing — 203 communities</td><td>上海市房屋管理局 公示 + AMap (2023 SHP)</td><td>2024</td></tr>
             <tr><td>Public/private schools · community health · food-basket prices</td><td>上海市教委 · 卫健委 · 区发改委 价格监测</td><td>2024–26</td></tr>
-            <tr><td>District income &amp; rent (16 districts)</td><td>Shanghai stats bureau · E-house/CRIC</td><td>2024</td></tr>
+            <tr><td>District income (9 official 公报 + 7 city-proxy) · rent</td><td>区统计公报 · tjj.sh.gov.cn · E-house/CRIC</td><td>2024</td></tr>
             <tr><td>Admin boundaries (neighbourhoods &amp; districts)</td><td>UTSEUS / OpenStreetMap</td><td>2023</td></tr>
           </tbody>
         </table>

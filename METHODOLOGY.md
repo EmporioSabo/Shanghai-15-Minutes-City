@@ -30,7 +30,7 @@ and the web app. It is the reference for the report and defense.
 - **Education = EDU 2026 kindergarten + K-12 census** (≈4,050 schools; typecodes 141204/141203/141202). The broad SHP `科教文化服务` set (universities/vocational/adult-ed/campus sub-points + libraries/cultural palaces) and private tutoring (培训机构) are excluded from the baseline (Mouratidis: don't aggregate dissimilar facilities) but retained in `poi_clean` for the Track C public-vs-private school ratio and free-amenity indicators. Schools are slow-changing infrastructure, so the 2026 vintage vs the 2023/24 base is acceptable (logged in provenance).
 - **Rent:** Anjuke sale-price listings (445k), median per hex.
 - **Social housing:** 114 affordable-housing communities (talent apartments, public rental, resettlement) name-matched from the 商务住宅 category of the same 2023 SHP.
-- **District income/rent:** 2024 figures (Shanghai statistical communiqués + E-house/CRIC), AI-compiled, cross-checked against official anchors.
+- **District income/rent:** *income* = 居民人均可支配收入 (2024), **officially sourced & verified against each 区 统计公报 for 9 districts** (e.g. 浦东 95,176, 宝山 88,642 confirmed by direct fetch of the 公报 原文). The 7 central districts (黄浦/徐汇/长宁/静安/普陀/虹口/杨浦) **do not publish** per-district income, so they use the official city 城镇 figure (93,095, tjj.sh.gov.cn) as a documented proxy — this *understates* the wealthier central districts, but their affordability is rent-dominated so the ranking holds. *rent* = E-house/CRIC commercial rental (the one remaining non-official input). #5 is therefore the least-precise indicator.
 
 ## Notebook 02 — Grid & isochrones
 
@@ -102,9 +102,11 @@ Primary sources are the official publications below; see the AI-assistance discl
 > district-level income/rent figures (#5) — were *aggregated/compiled* from the cited
 > 上海市教委 / 卫健委 / 房管局 publications using Chinese LLMs (Doubao office-task mode) as a
 > **research aid**, cross-checked across models (DeepSeek) and against official totals
-> (e.g. 社区卫生服务中心 247 ≈ the 248 official figure; private high-school coverage ~100%;
-> income anchored to district 统计公报). The LLMs were aggregation tools, **not the source
-> of record** — every datum traces to the cited government publications.
+> (e.g. 社区卫生服务中心 247 ≈ the 248 official figure; private high-school coverage ~100%).
+> District **income** (#5) was further **verified directly against the source 公报** — the 9
+> publishing districts' figures were confirmed by fetching the 公报 原文; the 7 central
+> districts that don't publish it use the official city proxy. The LLMs were aggregation/finder
+> tools, **not the source of record** — every datum traces to the cited government publication.
 
 ## Web app
 
