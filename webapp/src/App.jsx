@@ -18,7 +18,7 @@ const VIEWS = [
   },
   {
     key: 'track_c', label: 'Track C', field: 'tc', mode: 'baseline',
-    hint: 'Affordability composite · 7 indicators (rent, income/rent, jobs, social housing, amenities…)',
+    hint: 'Affordability composite · 8 indicators (rent, income/rent, jobs, social housing, amenities…)',
   },
   {
     key: 'walk', label: '🚶 Walk', field: 'wk', mode: 'walk',
@@ -30,7 +30,7 @@ const VIEWS = [
   },
   {
     key: 'transit', label: '🚇 Transit', field: 'tr', mode: 'transit',
-    hint: 'Transit composite across 6 indicators',
+    hint: 'Transit composite · metro-routed · comparison only (not 15MC)',
   },
   {
     key: 'car', label: '🚗 Car', field: 'car', mode: 'car',
@@ -204,7 +204,7 @@ export default function App() {
         <Legend activeField={activeField} />
 
         <div className="sidebar-footer">
-          <span>Data: AMap 2023 · Anjuke · OSM</span>
+          <span>Data: AMap · OSM · Anjuke · shmetro · 上海市官方数据 — see ⓘ</span>
         </div>
       </aside>
 

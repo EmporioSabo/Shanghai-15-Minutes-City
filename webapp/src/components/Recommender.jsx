@@ -19,7 +19,7 @@ const VIEW_METHOD = {
 }
 
 function RentLabel({ rent }) {
-  if (!rent) return <span className="rent-na">rent n/a</span>
+  if (!rent) return <span className="rent-na">price n/a</span>
   return <span>¥{(rent / 1000).toFixed(0)}k/m²</span>
 }
 
@@ -32,7 +32,7 @@ export default function Recommender({ sliders, setSliders, onRecommend, onClear,
 
       <div className="rec-method-box">
         <p className="rec-method-title">{MODE_LABELS[effectiveMode]}</p>
-        <p className="rec-method-body">{VIEW_METHOD[viewKey]} · affordability blends rent, income/rent &amp; social housing (mode-independent).</p>
+        <p className="rec-method-body">{VIEW_METHOD[viewKey]} · affordability blends housing price, income/rent &amp; social housing (mode-independent).</p>
       </div>
 
       <p className="rec-hint">Adjust weights, then find your top 10 hexes.</p>

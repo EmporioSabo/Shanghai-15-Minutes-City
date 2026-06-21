@@ -61,7 +61,7 @@ export default function MapView({ hexData, activeField, topHexes, showSweetSpots
             <b style="color:#ff6b35">${topHexes.has(object.id) ? '★ Top pick' : ''}</b>
             ${topHexes.has(object.id) ? '<br/>' : ''}
             Score: <b>${((object[activeField] ?? 0) * 100).toFixed(1)}%</b>
-            ${object.rent ? `<br/>Rent: ¥${(object.rent / 1000).toFixed(0)}k/m²` : ''}
+            ${object.rent ? `<br/>Price: ¥${(object.rent / 1000).toFixed(0)}k/m² (sale)` : ''}
             ${object.ss ? '<br/>✨ Sweet spot' : ''}
           </div>`,
           style: {

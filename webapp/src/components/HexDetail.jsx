@@ -18,14 +18,17 @@ const SUBSCORE_LABEL = {
   car:      '🚗 Car (comparison)',
 }
 
-// Track C affordability & equity sub-scores (direct hex fields, 0–1, mode-independent)
+// Track C affordability & equity sub-scores (direct hex fields, 0–1, mode-independent).
+// All 8 brief indicators, in composite order. 'raf' is housing *sale* price (the rent
+// proxy); 'ir' uses district monthly rental — kept distinct on purpose.
 const TRACK_C_SUBS = [
-  { key: 'raf', label: 'Low rent' },
+  { key: 'raf', label: 'Low housing price' },
   { key: 'ir',  label: 'Income vs rent' },
+  { key: 'fd',  label: 'Food affordability' },
   { key: 'sh',  label: 'Social housing' },
   { key: 'et',  label: 'Jobs by transit' },
   { key: 'fa',  label: 'Free amenities' },
-  { key: 'cr',  label: 'Clinics' },
+  { key: 'cr',  label: 'Clinics (public)' },
   { key: 'sp',  label: 'Public schools' },
 ]
 
@@ -80,7 +83,7 @@ export default function HexDetail({ hex, effectiveMode, viewKey, onClose }) {
       </div>
 
       <p className="detail-mode-label detail-section-head">
-        Affordability &amp; equity <span className="detail-mode-note">(Track C · percentile-ranked, mode-independent)</span>
+        Affordability &amp; equity <span className="detail-mode-note">(Track C · percentile / district min–max · mode-independent)</span>
       </p>
       <div className="detail-indicators">
         {TRACK_C_SUBS.map(sub => {
@@ -117,7 +120,7 @@ export default function HexDetail({ hex, effectiveMode, viewKey, onClose }) {
           <strong>{metroLabel}</strong>
         </div>
         <div className="meta-row">
-          <span>Rent band</span>
+          <span>Housing price (sale)</span>
           <strong>{getRentBand(hex.rent)}</strong>
         </div>
       </div>
