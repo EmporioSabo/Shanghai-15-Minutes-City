@@ -75,12 +75,22 @@ track_c = 0.25 baseline + 0.20 rent + 0.15 income/rent + 0.12 employment
 | income/rent | min–max across the 16 districts |
 | social_housing | inverted distance-percentile to nearest affordable community |
 | employment | transit cumulative-opportunity level |
-| free_amenity / clinic / school | percentile rank |
+| free_amenity | percentile rank (parks/libraries/cultural/public POIs) |
+| clinic (community vs private hospital) | min–max across the 16 districts |
+| school (public vs private) | percentile rank of public-school share |
 
 Percentile-rank / min–max normalization follows the composite-indicator
 convention (OECD 2008; Knap et al. 2022). **Food-basket cost** (8th brief
 indicator) is excluded — Shanghai food prices vary <10% across districts, so
 there is no hex-level signal.
+
+**Track C equity data (public vs private — AMap carries no ownership flag, so
+these come from official registries, joined in NB03; sources cited in-cell):**
+
+| Indicator | Source | Coverage / caveat |
+|---|---|---|
+| #7 Public vs private **school** | 上海市民办学校名单 2024 (上海市教委 / 区教育局; compiled via Doubao office-mode, cross-checked vs DeepSeek) — `上海市民办学校名单2024.csv` (300 民办) name-joined to the EDU 2026 census | HS ~100%, kindergarten ~68%, primary ~47%; name-match ~73% recall |
+| #6 Community health vs **private hospital** | 上海市卫健委 (wsjkw.sh.gov.cn): 社区卫生服务中心名单 (247, complete, per district) + 社会办医疗机构名单 (115 民营 hospitals) — `上海社区卫生服务中心2024.csv`, `上海民营医院名单2024.csv` | private list is **市级-审批 only** (区级 excluded; est. citywide ~267–321) → lower bound |
 
 ## Web app
 
