@@ -34,6 +34,10 @@ webapp/.vercel/
 # ── Local working notes (not for public repo) ───────────────────
 doubao_report.md
 comparison/
+# Raw AI-assist dumps (cleaned CSVs are committed as the actual inputs)
+doubao*.txt
+deepseek*.txt
+上海市民办学校名单 2024.md
 
 # ── Misc ─────────────────────────────────────────────────────────
 .DS_Store
