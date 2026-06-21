@@ -17,7 +17,10 @@ and the web app. It is the reference for the report and defense.
 | **Knap et al. (2022)** — *A composite X-minute city cycling accessibility metric* | Composite-index aggregation (normalize each need → weight) |
 | **OECD (2008)** — *Handbook on Constructing Composite Indicators* | Percentile-rank normalization (Track C sub-scores) |
 | **Bohannon & Williams Andrews (2011)** — *Normal walking speed* | The 3.39 km/h inclusive walking speed |
-| **Schuhmacher et al. (2025)** — *Cycling Speeds in Urban Traffic* (*Findings*) | Urban cycling speed range (bike = 15 km/h, conservative end) |
+| **Hosford et al. (2022)** — *Is the 15-minute city within reach?* | Measured urban cycling speeds 13.9–16.2 km/h (bike = 15, mid-range); inclusive-walk corroboration |
+| **Schuhmacher et al. (2025)** — *Cycling Speeds in Urban Traffic* (*Findings*) | Urban cycling speed range (bike = 15 km/h within 14.3–21.3) |
+| **Jiménez et al. (2021)** — *Instantaneous speed … Ocaña* | GPS-observed urban car operating speeds 13–29 km/h (car = 30, free-flow end; comparison only) |
+| **O'Sullivan et al. (2000); Lima & Costa (2023)** — *PT isochrones / 15MC review* | No single transit speed → transit-mode is a disclosed road proxy; indicator = supply accessibility |
 
 ## Notebook 01 — Data collection
 
@@ -33,7 +36,7 @@ and the web app. It is the reference for the report and defense.
 
 - **Grid:** 500 m cells, 31,445, clipped to the 16 districts — the **full administrative area** (rural Chongming / estuary kept; no inhabited-hex filter, so genuine rural gaps show honestly).
 - **Routing:** graph-tool Dijkstra on the OSM road network (not straight-line buffers; Zhang et al. 2022).
-- **Modes & speeds:** walk 3.39 km/h (inclusive; Mouratidis / Bohannon & Williams Andrews) · bike 15 km/h (conservative end; Schuhmacher et al. 2025) · transit 25 km/h (calibrated car-network proxy ≈ bus/BRT commercial speed) · car 30 km/h (off-peak; comparison only). Only walk + bike feed the baseline.
+- **Modes & speeds:** walk 3.39 km/h (inclusive; Mouratidis / Bohannon & Williams Andrews) · bike 15 km/h (mid-range of measured 13.9–16.2; Hosford et al. 2022, cf. Schuhmacher et al. 2025) · transit 25 km/h (disclosed road-network proxy — literature uses no single transit speed, no Shanghai GTFS; baseline transit *indicator* = supply accessibility, Mouratidis 2026) · car 30 km/h (free-flow end of GPS-observed urban speeds ≈29.3 main-road, Jiménez et al. 2021; comparison only — Feng et al. 2025; Yu & Higgins 2024). Only walk + bike feed the baseline.
 - **Threshold:** 15 min (900 s). Travel time = cell-snap + network + POI-snap (final leg walked).
 - **Measure (Mouratidis):** cumulative opportunities — the **count** of POIs reachable within 15 min (`n_*`), per cell/mode/need. The nearest-facility time (`pt_*`) is recorded for the §4d validation only.
 - **Employment:** 公司企业 added as a transit-mode Track-C input (not a baseline need).
