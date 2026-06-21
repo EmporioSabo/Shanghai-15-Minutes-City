@@ -85,13 +85,22 @@ indicator) is excluded — Shanghai food prices vary <10% across districts, so
 there is no hex-level signal.
 
 **Track C equity data (public vs private — AMap carries no ownership flag, so
-these come from official registries, joined in NB03; sources cited in-cell):**
+these come from official government registries, joined in NB03; sources cited in-cell).**
+Primary sources are the official publications below; see the AI-assistance disclosure (†).
 
-| Indicator | Source | Coverage / caveat |
+| Indicator | Primary source (official) | Coverage / caveat |
 |---|---|---|
-| #7 Public vs private **school** | 上海市民办学校名单 2024 (上海市教委 / 区教育局; compiled via Doubao office-mode, cross-checked vs DeepSeek) — `上海市民办学校名单2024.csv` (300 民办) name-joined to the EDU 2026 census | HS ~100%, kindergarten ~68%, primary ~47%; name-match ~73% recall |
-| #6 Community health vs **private hospital** | 上海市卫健委 (wsjkw.sh.gov.cn): 社区卫生服务中心名单 (247, complete, per district) + 社会办医疗机构名单 (115 民营 hospitals) — `上海社区卫生服务中心2024.csv`, `上海民营医院名单2024.csv` | private list is **市级-审批 only** (区级 excluded; est. citywide ~267–321) → lower bound |
-| #8 Affordable / **social housing** | Official 上海市保障性住房项目 2024 (上海市房屋管理局 + 各区房管局/政府官网 公租房/共有产权/人才公寓 公示; Doubao office-mode, cross-checked vs DeepSeek) — `上海保障性住房项目2024.csv` (112), **geocoded by name+address against the AMap 商务住宅 dump (89 of 112)** and merged with the 114 SHP-name-matched communities → **203 total** | 廉租 & 征收安置 lack public address lists; proximity proxy, not a census |
+| #7 Public vs private **school** | **上海市教育委员会** (edu.sh.gov.cn) + 各区教育局 民办学校招生/认定公示 2024 (闵行 mhedu.sh.cn · 宝山 shbsq.gov.cn · 青浦 shqp.gov.cn) + 上海市教育考试院 (shmeea.edu.cn) — `上海市民办学校名单2024.csv` (300 民办) name-joined to EDU 2026 | HS ~100%, kindergarten ~68%, primary ~47%; name-match ~73% recall |
+| #6 Community health vs **private hospital** | **上海市卫生健康委员会** (wsjkw.sh.gov.cn): 社区卫生服务中心名单 (247, complete, per district) + 社会办医疗机构名单 (115 民营 hospitals) — `上海社区卫生服务中心2024.csv`, `上海民营医院名单2024.csv` | private list is **市级-审批 only** (区级 excluded; est. citywide ~267–321) → lower bound |
+| #8 Affordable / **social housing** | **上海市房屋管理局** (fgj.sh.gov.cn 市筹公租房/共有产权公示) + 各区房管局/政府官网 人才公寓/安置房公示 2024 — `上海保障性住房项目2024.csv` (112), **geocoded by name+address against the AMap 商务住宅 dump (89 of 112)** and merged with the 114 SHP-name-matched communities → **203 total** | 廉租 & 征收安置 lack public address lists; proximity proxy, not a census |
+
+> **† AI-assistance disclosure.** The Track C equity registries above — and the
+> district-level income/rent figures (#5) — were *aggregated/compiled* from the cited
+> 上海市教委 / 卫健委 / 房管局 publications using Chinese LLMs (Doubao office-task mode) as a
+> **research aid**, cross-checked across models (DeepSeek) and against official totals
+> (e.g. 社区卫生服务中心 247 ≈ the 248 official figure; private high-school coverage ~100%;
+> income anchored to district 统计公报). The LLMs were aggregation tools, **not the source
+> of record** — every datum traces to the cited government publications.
 
 ## Web app
 
