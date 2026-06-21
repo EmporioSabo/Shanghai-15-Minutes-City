@@ -32,6 +32,15 @@ const TRACK_C_SUBS = [
 export default function HexDetail({ hex, effectiveMode, viewKey, onClose }) {
   const pct = v => ((v ?? 0) * 100).toFixed(0)
 
+  // Top amenities = the most accessible need-categories in the current mode
+  const topAmenities = INDICATORS
+    .map(ind => ({ label: ind.label, score: getIndicatorScore(hex, ind.key, effectiveMode) ?? 0 }))
+    .filter(a => a.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, 3)
+    .map(a => a.label)
+  const metroLabel = hex.md == null ? '—' : `${hex.md.toFixed(1)} km`
+
   return (
     <section className="hex-detail">
       <div className="hex-detail-header">
@@ -43,6 +52,10 @@ export default function HexDetail({ hex, effectiveMode, viewKey, onClose }) {
         Access subscores: <strong>{SUBSCORE_LABEL[effectiveMode]}</strong>
         <span className="detail-mode-note"> · cumulative-opportunity levels</span>
         {viewKey === 'track_c' && <span className="detail-mode-note"> (baseline component)</span>}
+      </p>
+
+      <p className="detail-top-amenities">
+        Top amenities: <strong>{topAmenities.length ? topAmenities.join(' · ') : 'none within reach'}</strong>
       </p>
 
       <div className="detail-indicators">
@@ -98,6 +111,10 @@ export default function HexDetail({ hex, effectiveMode, viewKey, onClose }) {
         <div className="meta-row">
           <span>Track C composite</span>
           <strong>{pct(hex.tc)}%</strong>
+        </div>
+        <div className="meta-row">
+          <span>Nearest metro</span>
+          <strong>{metroLabel}</strong>
         </div>
         <div className="meta-row">
           <span>Rent band</span>

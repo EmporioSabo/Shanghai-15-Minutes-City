@@ -320,6 +320,12 @@ p { line-height: 1.5; }
 .detail-mode-label strong { color: var(--text); }
 .detail-mode-note { font-style: italic; }
 .detail-section-head { margin-top: 14px; }
+.detail-top-amenities {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+.detail-top-amenities strong { color: var(--text); }
 .detail-indicators { margin-bottom: 10px; }
 .ind-row {
   display: flex;
