@@ -14,8 +14,8 @@ const VIEW_METHOD = {
   track_c:  'Walk + bike avg (baseline component)',
   walk:     'Walk-mode subscores',
   bike:     'Bike-mode subscores',
-  transit:  'Transit-mode subscores',
-  car:      'Car-mode subscores',
+  transit:  'Transit-mode subscores (comparison)',
+  car:      'Car-mode subscores (comparison)',
 }
 
 function RentLabel({ rent }) {

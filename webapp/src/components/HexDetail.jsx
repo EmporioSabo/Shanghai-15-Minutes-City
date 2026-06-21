@@ -14,8 +14,8 @@ const SUBSCORE_LABEL = {
   baseline: 'Walk + bike avg',
   walk:     '🚶 Walk',
   bike:     '🚲 Bike',
-  transit:  '🚇 Transit',
-  car:      '🚗 Car',
+  transit:  '🚇 Transit (comparison)',
+  car:      '🚗 Car (comparison)',
 }
 
 // Track C affordability & equity sub-scores (direct hex fields, 0–1, mode-independent)

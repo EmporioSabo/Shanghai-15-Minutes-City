@@ -4,8 +4,8 @@ const FIELD_LABELS = {
   base: 'Baseline (walk+bike avg)',
   wk:   'Walk composite',
   bk:   'Bike composite',
-  tr:   'Transit composite',
-  car:  'Car composite',
+  tr:   'Transit composite (comparison only)',
+  car:  'Car composite (comparison only)',
   tc:   'Track C score',
 }
 

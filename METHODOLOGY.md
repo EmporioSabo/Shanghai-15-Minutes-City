@@ -36,7 +36,7 @@ and the web app. It is the reference for the report and defense.
 
 - **Grid:** 500 m cells, 31,445, clipped to the 16 districts — the **full administrative area** (rural Chongming / estuary kept; no inhabited-hex filter, so genuine rural gaps show honestly).
 - **Routing:** graph-tool Dijkstra on the OSM road network (not straight-line buffers; Zhang et al. 2022).
-- **Modes & speeds:** walk 3.39 km/h (inclusive; Mouratidis / Bohannon & Williams Andrews) · bike 15 km/h (mid-range of measured 13.9–16.2; Hosford et al. 2022, cf. Schuhmacher et al. 2025) · transit 25 km/h (disclosed road-network proxy — literature uses no single transit speed, no Shanghai GTFS; baseline transit *indicator* = supply accessibility, Mouratidis 2026) · car 30 km/h (free-flow end of GPS-observed urban speeds ≈29.3 main-road, Jiménez et al. 2021; comparison only — Feng et al. 2025; Yu & Higgins 2024). Only walk + bike feed the baseline.
+- **Modes & speeds:** walk 3.39 km/h (inclusive; Mouratidis / Bohannon & Williams Andrews) · bike 15 km/h (mid-range of measured 13.9–16.2; Hosford et al. 2022, cf. Schuhmacher et al. 2025) · **transit = a real metro router** (OSM network of 18 lines / 390 stations + walk access/egress; in-vehicle = OSM inter-station distance ÷ 35 km/h [Lin et al. 2024; Morlok & Nitzberg 2004], boarding wait = ½ headway [rule: Stewart & Byrd 2022; Esfeh et al. 2020] using **official shmetro.com off-peak headways**, 5-min transfers [Petruccelli & Racina 2021; Nielsen et al. 2021]) · car 30 km/h (free-flow end of GPS-observed urban speeds ≈29.3 main-road, Jiménez et al. 2021). Only walk + bike feed the baseline; transit + car are comparison layers.
 - **Threshold:** 15 min (900 s). Travel time = cell-snap + network + POI-snap (final leg walked).
 - **Measure (Mouratidis):** cumulative opportunities — the **count** of POIs reachable within 15 min (`n_*`), per cell/mode/need. The nearest-facility time (`pt_*`) is recorded for the §4d validation only.
 - **Employment:** 公司企业 added as a transit-mode Track-C input (not a baseline need).
@@ -129,7 +129,8 @@ rather than an optimistic one.
 
 ## Known limitations
 
-- Transit and car speeds are documented approximations (calibrated proxy / off-peak), but neither feeds the baseline.
+- Transit is a **real metro router** (OSM lines/stations + walk access; literature-sourced params; official shmetro.com off-peak headways, one representative trunk value per line where short-turned/branched). Car is an off-peak approximation. **Neither feeds the baseline** — at a 15-min budget even real metro adds little over walking.
+- **Employment-by-transit (#4)** is implemented per the brief, but with a documented caveat: the literature shows 15-min transit job access is methodologically weak — standard cutoffs are **30–60 min**, and short thresholds are dominated by walking, not transit-network performance (Goliszek et al. 2020; Kapatsila et al. 2023; Deboosere & El-Geneidy 2018). We report it as specified while noting this limitation; the door-to-door definition (access + ½-headway wait + ride + transfer + egress) follows Torres & McArthur 2024.
 - Anjuke listings are sale prices, not rental; inner-district coverage is denser than the periphery.
 - Income/rent ratio is district-level (16 values) assigned to hexes by point-in-polygon.
 - Social-housing is a name-matched proximity proxy (undercounts neutral-named developments; skews to 人才公寓).

@@ -26,8 +26,8 @@ export const MODE_LABELS = {
   baseline: 'Baseline (walk+bike)',
   walk:     '🚶 Walk',
   bike:     '🚲 Bike',
-  transit:  '🚇 Transit',
-  car:      '🚗 Car',
+  transit:  '🚇 Transit (comparison)',
+  car:      '🚗 Car (comparison)',
 }
 
 // Track C affordability lenses (all 0–1, mode-independent):
