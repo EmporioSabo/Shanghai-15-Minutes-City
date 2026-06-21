@@ -33,6 +33,7 @@ webapp/.vercel/
 
 # ── Local working notes (not for public repo) ───────────────────
 doubao_report.md
+comparison/
 
 # ── Misc ─────────────────────────────────────────────────────────
 .DS_Store
