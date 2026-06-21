@@ -21,10 +21,10 @@ and the web app. It is the reference for the report and defense.
 
 ## Notebook 01 — Data collection
 
-- **POI source:** 2023 AMap SHP (not the 2024 CSV — its school records were wrong; supervisor's call).
+- **POI source:** 2023 AMap SHP for 5 baseline needs + Track C (not the 2024 CSV — its school records were wrong; supervisor's call). **Education baseline from the dedicated EDU 2026 AMap school census** (GCJ-02→WGS-84).
 - **Daily-use whitelist:** strict midType filter → 536k of 1.49M raw POIs kept (drops parking, specialist retail, public toilets, address points, etc.).
 - **Six baseline needs:** food · healthcare · education · recreation · transit · daily services.
-- **Education = schools (学校) only;** private tutoring (培训机构) excluded from the baseline (Mouratidis: don't aggregate dissimilar facilities), but retained in the dataset for the Track C public-vs-private school ratio.
+- **Education = EDU 2026 kindergarten + K-12 census** (≈4,050 schools; typecodes 141204/141203/141202). The broad SHP `科教文化服务` set (universities/vocational/adult-ed/campus sub-points + libraries/cultural palaces) and private tutoring (培训机构) are excluded from the baseline (Mouratidis: don't aggregate dissimilar facilities) but retained in `poi_clean` for the Track C public-vs-private school ratio and free-amenity indicators. Schools are slow-changing infrastructure, so the 2026 vintage vs the 2023/24 base is acceptable (logged in provenance).
 - **Rent:** Anjuke sale-price listings (445k), median per hex.
 - **Social housing:** 114 affordable-housing communities (talent apartments, public rental, resettlement) name-matched from the 商务住宅 category of the same 2023 SHP.
 - **District income/rent:** 2024 figures (Shanghai statistical communiqués + E-house/CRIC), AI-compiled, cross-checked against official anchors.
