@@ -62,11 +62,11 @@ walk 0.15 < bike 0.40 < transit 0.51 < car 0.54), give any reachable facility �
 - **Baseline** = (walk + bike) / 2 (non-car; Moreno et al. 2021). Transit/car composites are shown for comparison only.
 - **H3 aggregation:** resolution 8 (~0.56 km², 14,227 hexes) — finer than r7.
 
-### Track C — Affordability (weighted index; 7 of 8 brief indicators)
+### Track C — Affordability (weighted index; all 8 brief indicators)
 
 ```
-track_c = 0.25 baseline + 0.20 rent + 0.15 income/rent + 0.12 employment
-        + 0.10 social_housing + 0.08 free_amenity + 0.05 clinic + 0.05 school
+track_c = 0.25 baseline + 0.20 rent + 0.15 income/rent + 0.10 employment
+        + 0.10 social_housing + 0.05 (free_amenity + food + clinic + school)
 ```
 
 | Sub-score | Normalization |
@@ -78,11 +78,15 @@ track_c = 0.25 baseline + 0.20 rent + 0.15 income/rent + 0.12 employment
 | free_amenity | percentile rank (parks/libraries/cultural/public POIs) |
 | clinic (community vs private hospital) | min–max across the 16 districts |
 | school (public vs private) | percentile rank of public-school share |
+| food (weekly basket cost) | inverted min–max of cheapest walk-reachable channel cost |
 
 Percentile-rank / min–max normalization follows the composite-indicator
-convention (OECD 2008; Knap et al. 2022). **Food-basket cost** (8th brief
-indicator) is excluded — Shanghai food prices vary <10% across districts, so
-there is no hex-level signal.
+convention (OECD 2008; Knap et al. 2022). **Food-basket cost** is included not as
+a (non-existent) per-district price but as the **cost of the cheapest grocery
+channel reachable within a 15-min walk** — supermarket ≈115 < wet/general market
+≈130 < none ≈170 元/week (上海市/区发改委 价格监测 2026; the 170 food-desert penalty =
+wet × 1.3, a documented assumption). The spatial signal is *access to cheap food
+channels*, not location-based price (within-city staple prices vary <10%).
 
 **Track C equity data (public vs private — AMap carries no ownership flag, so
 these come from official government registries, joined in NB03; sources cited in-cell).**
