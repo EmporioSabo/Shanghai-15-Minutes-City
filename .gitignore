@@ -52,3 +52,7 @@ doubao7*.txt
 doubao7csv*.csv
 doubao8.txt
 doubaocsv*.csv
+
+# Trello board exports (deliverable artifacts, not source)
+jSNASn1u*
+15mc-trello-*.json
