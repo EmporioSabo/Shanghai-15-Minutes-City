@@ -7,18 +7,25 @@
   --orange-lt:  #fff0eb;
   --gold:       #ffd60a;
   --surface:    #ffffff;
-  --surface-alt:#f8f9fa;
-  --border:     #e9ecef;
-  --text:       #212529;
-  --text-muted: #6c757d;
-  --shadow:     0 2px 12px rgba(0,0,0,0.10);
-  --radius:     8px;
-  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --surface-alt:#f5f7f6;
+  --border:     #e7ebe9;
+  --text:       #1a1f1c;
+  --text-muted: #6b756f;
+  --shadow:     0 1px 2px rgba(16,32,24,.05), 0 10px 28px -10px rgba(16,32,24,.20);
+  --radius:     10px;
+  --font:         'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: 'Space Grotesk', var(--font);
 }
 
 /* ── Reset ──────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--font); color: var(--text); background: #e8ecef; }
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: #e8ecef;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 button { cursor: pointer; border: none; background: none; font: inherit; }
 p { line-height: 1.5; }
 
@@ -77,14 +84,17 @@ p { line-height: 1.5; }
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 20px 16px 14px;
+  padding: 22px 16px 16px;
   border-bottom: 1px solid var(--border);
+  background: linear-gradient(180deg, var(--green-lt) 0%, transparent 140%);
 }
 .app-title {
-  font-size: 17px;
+  font-family: var(--font-display);
+  font-size: 20px;
   font-weight: 700;
   color: var(--green);
-  letter-spacing: -0.3px;
+  letter-spacing: -0.4px;
+  line-height: 1.1;
 }
 .app-subtitle {
   font-size: 11px;
@@ -143,6 +153,8 @@ p { line-height: 1.5; }
   background: var(--green);
   border-color: var(--green);
   color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 8px -2px rgba(45,106,79,.5);
 }
 
 /* Score view — 3-column grid, 2 rows, all 6 options equal width */
@@ -197,8 +209,9 @@ p { line-height: 1.5; }
   padding: 14px 16px;
 }
 .recommender h3 {
-  font-size: 13px;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
   color: var(--text);
   margin-bottom: 4px;
 }
@@ -302,8 +315,9 @@ p { line-height: 1.5; }
   margin-bottom: 10px;
 }
 .hex-detail-header h3 {
-  font-size: 13px;
-  font-weight: 700;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
 }
 .close-btn {
   color: var(--text-muted);
@@ -482,8 +496,10 @@ p { line-height: 1.5; }
 }
 .modal-close:hover { background: var(--border); }
 .modal h2 {
-  font-size: 18px; margin-bottom: 16px;
+  font-family: var(--font-display);
+  font-size: 20px; margin-bottom: 16px;
   color: var(--green);
+  letter-spacing: -0.3px;
 }
 .modal h3 {
   font-size: 13px; font-weight: 700;
