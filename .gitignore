@@ -56,3 +56,6 @@ doubaocsv*.csv
 # Trello board exports (deliverable artifacts, not source)
 jSNASn1u*
 15mc-trello-*.json
+
+# Personal submission reference (holds the Trello invite link — keep private)
+SUBMISSION.md
